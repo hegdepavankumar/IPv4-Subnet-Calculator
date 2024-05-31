@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPv4 Subnet Calculator</title>
+
+</head>
+<body>
+    <div class="background"></div>
+    <div class="floating-numbers">
+        <div class="number" style="left: 10%; animation-duration: 4s;">1</div>
+        <div class="number" style="left: 20%; animation-duration: 12s;">0</div>
+        <div class="number" style="left: 30%; animation-duration: 15s;">1</div>
+        <div class="number" style="left: 40%; animation-duration: 18s;">1</div>
+        <div class="number" style="left: 50%; animation-duration: 10s;">0</div>
+        <div class="number" style="left: 60%; animation-duration: 13s;">1</div>
+        <div class="number" style="left: 70%; animation-duration: 9s;">0</div>
+        <div class="number" style="left: 80%; animation-duration: 16s;">1</div>
+        <div class="number" style="left: 90%; animation-duration: 14s;">0</div>
+        <div class="number" style="left: 110%; animation-duration: 4s;">1</div>
+        <div class="number" style="left: 120%; animation-duration: 14s;">0</div>
+        <div class="number" style="left: 130%; animation-duration: 14s;">1</div>
+        <div class="number" style="left: 140%; animation-duration: 10s;">0</div>
+
+    </div>
+    <div class="container">
+        <h2>IPv4 Subnet Calculator</h2>
+        <form id="subnetForm">
+            <label for="ipAddress">IP Address:</label>
+            <input type="text" id="ipAddress" name="ipAddress" placeholder="e.g., 192.168.1.1" required>
+
+            <label for="subnetMask">Subnet Mask:</label>
+            <select id="subnetMask" name="subnetMask">
+                <option value="255.255.255.255">/32</option>
+                <option value="255.255.255.254">/31</option>
+                <option value="255.255.255.252">/30</option>
+                <option value="255.255.255.248">/29</option>
+                <option value="255.255.255.240">/28</option>
+                <option value="255.255.255.224">/27</option>
+                <option value="255.255.255.192">/26</option>
+                <option value="255.255.255.128">/25</option>
+                <option value="255.255.255.0">/24</option>
+                <option value="255.255.254.0">/23</option>
+                <option value="255.255.252.0">/22</option>
+                <option value="255.255.248.0">/21</option>
+                <option value="255.255.240.0">/20</option>
+                <option value="255.255.224.0">/19</option>
+                <option value="255.255.192.0">/18</option>
+                <option value="255.255.128.0">/17</option>
+                <option value="255.255.0.0">/16</option>
+                <option value="255.254.0.0">/15</option>
+                <option value="255.252.0.0">/14</option>
+                <option value="255.248.0.0">/13</option>
+                <option value="255.240.0.0">/12</option>
+                <option value="255.224.0.0">/11</option>
+                <option value="255.192.0.0">/10</option>
+                <option value="255.128.0.0">/9</option>
+                <option value="255.0.0.0">/8</option>
+            </select>
+
+            <button type="button" onclick="calculateSubnet()">Calculate</button>
+        </form>
+
+        <div class="results" id="results">
+            <h3>Results:</h3>
+            <p id="cidr">CIDR Notation: </p>
+            <p id="networkAddress">Network Address: </p>
+            <p id="broadcastAddress">Broadcast Address: </p>
+            <p id="usableIPRange">Usable IP Range: </p>
+            <p id="totalHosts">Total Hosts: </p>
+            <p id="usableHosts">Usable Hosts: </p>
+            <p id="subnetMaskBinary">Binary Subnet Mask: </p>
+            <p id="ipClass">IP Class: </p>
+            <p id="wildcardMask">Wildcard Mask: </p>
+            <p id="ipType">IP Type: </p>
+        </div>
+    </div>
+
+    <!-- Subnet mask information table from the second page -->
+    <div class="container">
+        <h1>Network Prefixes and Subnet Information</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>Prefix size</th>
+                  <th>Network mask</th>
+                  <th>Usable hosts per subnet</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>/1</td>
+                  <td>128.0.0.0</td>
+                  <td>2,147,483,646</td>
+                </tr>
+                <tr>
+                  <td>/2</td>
+                  <td>192.0.0.0</td>
+                  <td>1,073,741,822</td>
+                </tr>
+                <tr>
+                  <td>/3</td>
+                  <td>224.0.0.0</td>
+                  <td>536,870,910</td>
+                </tr>
+                <tr>
+                  <td>/4</td>
+                  <td>240.0.0.0</td>
+                  <td>268,435,454</td>
+                </tr>
+                <tr>
+                  <td>/5</td>
+                  <td>248.0.0.0</td>
+                  <td>134,217,726</td>
+                </tr>
+                <tr>
+                  <td>/6</td>
+                  <td>252.0.0.0</td>
+                  <td>67,108,862</td>
+                </tr>
+                <tr>
+                  <td>/7</td>
+                  <td>254.0.0.0</td>
+                  <td>33,554,430</td>
+                </tr>
+                <tr>
+                  <td colspan="3"><strong>Class A</strong></td>
+                </tr>
+                <tr>
+                  <td>/8</td>
+                  <td>255.0.0.0</td>
+                  <td>16,777,214</td>
+                </tr>
+                <tr>
+                  <td>/9</td>
+                  <td>255.128.0.0</td>
+                  <td>8,388,606</td>
+                </tr>
+                <tr>
+                  <td>/10</td>
+                  <td>255.192.0.0</td>
+                  <td>4,194,302</td>
+                </tr>
+                <tr>
+                  <td>/11</td>
+                  <td>255.224.0.0</td>
+                  <td>2,097,150</td>
+                </tr>
+                <tr>
+                  <td>/12</td>
+                  <td>255.240.0.0</td>
+                  <td>1,048,574</td>
+                </tr>
+                <tr>
+                  <td>/13</td>
+                  <td>255.248.0.0</td>
+                  <td>524,286</td>
+                </tr>
+                <tr>
+                  <td>/14</td>
+                  <td>255.252.0.0</td>
+                  <td>262,142</td>
+                </tr>
+                <tr>
+                  <td>/15</td>
+                  <td>255.254.0.0</td>
+                  <td>131,070</td>
+                </tr>
+                <tr>
+                  <td colspan="3"><strong>Class B</strong></td>
+                </tr>
+                <tr>
+                  <td>/16</td>
+                  <td>255.255.0.0</td>
+                  <td>65,534</td>
+                </tr>
+                <tr>
+                  <td>/17</td>
+                  <td>255.255.128.0</td>
+                  <td>32,766</td>
+                </tr>
+                <tr>
+                  <td>/18</td>
+                  <td>255.255.192.0</td>
+                  <td>16,382</td>
+                </tr>
+                <tr>
+                  <td>/19</td>
+                  <td>255.255.224.0</td>
+                  <td>8,190</td>
+                </tr>
+                <tr>
+                  <td>/20</td>
+                  <td>255.255.240.0</td>
+                  <td>4,094</td>
+                </tr>
+                <tr>
+                  <td>/21</td>
+                  <td>255.255.248.0</td>
+                  <td>2,046</td>
+                </tr>
+                <tr>
+                  <td>/22</td>
+                  <td>255.255.252.0</td>
+                  <td>1,022</td>
+                </tr>
+                <tr>
+                  <td>/23</td>
+                  <td>255.255.254.0</td>
+                  <td>510</td>
+                </tr>
+                <tr>
+                  <td colspan="3"><strong>Class C</strong></td>
+                </tr>
+                <tr>
+                  <td>/24</td>
+                  <td>255.255.255.0</td>
+                  <td>254</td>
+                </tr>
+                <tr>
+                  <td>/25</td>
+                  <td>255.255.255.128</td>
+                  <td>126</td>
+                </tr>
+                <tr>
+                  <td>/26</td>
+                  <td>255.255.255.192</td>
+                  <td>62</td>
+                </tr>
+                <tr>
+                  <td>/27</td>
+                  <td>255.255.255.224</td>
+                  <td>30</td>
+                </tr>
+                <tr>
+                  <td>/28</td>
+                  <td>255.255.255.240</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>/29</td>
+                  <td>255.255.255.248</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>/30</td>
+                  <td>255.255.255.252</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>/31</td>
+                  <td>255.255.255.254</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>/32</td>
+                  <td>255.255.255.255</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+
+<footer>
+  <div class="footer-links">
+      <a href="https://github.com/yourusername" target="_blank"><img src="./social-images/github.png" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/yourusername" target="_blank"><img src="./social-images/linkedin.png" alt="LinkedIn"></a>
+      <a href="https://t.me/yourusername" target="_blank"><img src="./social-images/telegram.png" alt="Telegram"></a>
+  </div>
+  <p>Copyright &copy; 2024 Pavankumar Hegde | All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
