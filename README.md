@@ -1,4 +1,10 @@
-🌐 **IPv4 Subnet Calculator**
+## 🌐 IPv4 Subnet Calculator
+
+![GitHub](https://img.shields.io/github/license/hegdepavankumar/IPv4-Subnet-Calculator=flat)
+![GitHub top language](https://img.shields.io/github/languages/top/hegdepavankumar/IPv4-Subnet-Calculator?style=flat)
+![GitHub last commit](https://img.shields.io/github/last-commit/hegdepavankumar/IPv4-Subnet-Calculator?style=flat)
+![ViewCount](https://views.whatilearened.today/views/github/hegdepavankumar/IPv4-Subnet-Calculator.svg?cache=remove)
+
 
 Welcome to the IPv4 Subnet Calculator repository! This tool is your ultimate companion for subnet calculations, offering advanced graphics and a user-friendly interface. No ads, no clutter—just pure functionality.
 
